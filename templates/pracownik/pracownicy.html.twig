@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <meta charset="utf-8">
+    {% block title %}Wszyscy pracownicy{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-light" style="background-color: #F0FFFF;">
+        <ul>
+            <li><a href="{{ path('main') }}">Strona główna</a></li>
+            <li><a href="{{ path('wszytkieZespoly') }}">Zespoły</a></li>
+            <li><a href="">Zadania</a></li>
+            <li><a href="{{ path('dodajPracownika') }}" style="float: right">Dodaj pracownika</a></li>
+        </ul>
+    </nav>
+
+    {% for pracownik in wszycyPracownicy %}
+        <div class="blokDanych">
+            <h4>Imie i nazwisko: {{ pracownik.imie }} {{ pracownik.nazwisko }}</h4>
+            <h4>Stanowisko: {{ pracownik.stanowisko }}</h4>
+            <h4>Wynagrodzenie: {{ pracownik.wynagrodzenie }}</h4>
+            <h4>Zespół: {{ pracownik.zespoId.nazwa }}</h4>
+
+            <ul>
+                <li><a href="{{ path('edytujPracownika', {'id': pracownik.id}) }}" type="button">Edytuj pracownika</a></li>
+            </ul>
+        </div>
+    {% endfor %}
+
+{% endblock %}

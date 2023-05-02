@@ -102,4 +102,11 @@ class Zespol
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->nazwa;
+    }
+
+
 }

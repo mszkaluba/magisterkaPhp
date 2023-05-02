@@ -41,6 +41,7 @@ class ZespolController extends AbstractController
 
         return $this->render('zespol/dodajZespol.html.twig', [
             'form' => $form->createView(),
+            'czyEdycja' => false
         ]);
     }
 
@@ -92,6 +93,7 @@ class ZespolController extends AbstractController
 
         return $this->render('zespol/dodajZespol.html.twig', [
             'form' => $form->createView(),
+            'czyEdycja' => true
         ]);
     }
 }

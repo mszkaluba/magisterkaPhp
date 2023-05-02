@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Pracownik;
 use App\Entity\Zespol;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,5 +25,15 @@ class MainController extends AbstractController
         [
             'wszytkieZespoly' => $wszytkieZespoly
         ]);
+    }
+
+    #[Route('/wszycyPracownicy', name: 'wszycyPracownicy')]
+    public function wszycyPracownicy(EntityManagerInterface $entityManager): Response
+    {
+        $wszycyPracownicy = $entityManager->getRepository(Pracownik::class)->findAll();
+        return $this->render('pracownik/pracownicy.html.twig',
+            [
+                'wszycyPracownicy' => $wszycyPracownicy
+            ]);
     }
 }
