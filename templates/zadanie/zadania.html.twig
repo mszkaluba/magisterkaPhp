@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <meta charset="utf-8">
+    {% block title %}Wszytkie zadania{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-light" style="background-color: #F0FFFF;">
+        <ul>
+            <li><a href="{{ path('main') }}">Strona główna</a></li>
+            <li><a href="{{ path('wszytkieZespoly') }}">Zespoły</a></li>
+            <li><a href="{{ path('wszycyPracownicy') }}">Pracownicy</a></li>
+            <li><a href="{{ path('dodajZadanie') }}" style="float: right">Dodaj zadanie</a></li>
+        </ul>
+    </nav>
+
+    {% for zadanie in wszystkieZadania %}
+        <div class="blokDanych">
+            <h4>Nazwa zadania: <b>{{ zadanie.nazwa }}</b></h4>
+            <h5>Przypisany pracownik: {{ zadanie.pracownikId.imie }} {{ zadanie.pracownikId.nazwisko }}</h5>
+            <h5>Status: {{ zadanie.status }}</h5>
+            <p>{{ zadanie.opis }}</p>
+            <ul>
+                <li><a href="{{ path('edytujZadanie', {'id': zadanie.id}) }}" type="button">Edytuj zadanie</a></li>
+            </ul>
+        </div>
+    {% endfor %}
+
+{% endblock %}

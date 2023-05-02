@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pracownik;
+use App\Entity\Zadanie;
 use App\Entity\Zespol;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +35,16 @@ class MainController extends AbstractController
         return $this->render('pracownik/pracownicy.html.twig',
             [
                 'wszycyPracownicy' => $wszycyPracownicy
+            ]);
+    }
+
+    #[Route('/wszystkieZadania', name: 'wszystkieZadania')]
+    public function wszystkieZadania(EntityManagerInterface $entityManager): Response
+    {
+        $wszystkieZadania = $entityManager->getRepository(Zadanie::class)->findAll();
+        return $this->render('zadanie/zadania.html.twig',
+            [
+                'wszystkieZadania' => $wszystkieZadania
             ]);
     }
 }

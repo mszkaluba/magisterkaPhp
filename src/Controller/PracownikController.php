@@ -76,7 +76,7 @@ class PracownikController extends AbstractController
         return $form;
     }
 
-    #[Route('/zespol/edytujPracownika/{id}', name: 'edytujPracownika')]
+    #[Route('/pracownik/edytujPracownika/{id}', name: 'edytujPracownika')]
     public function edytujPracownika(Request $request, EntityManagerInterface $entityManager, $id): Response
     {
         $pracownik = $entityManager->getRepository(Pracownik::class)->find($id);
