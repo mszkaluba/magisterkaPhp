@@ -21,8 +21,8 @@ class Zespol
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nazwa = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $szef_zespolu = null;
+    #[ORM\OneToOne(mappedBy: 'zespo_id', targetEntity: Pracownik::class)]
+    private ?Pracownik $szef_zespolu = null;
 
     #[ORM\OneToMany(mappedBy: 'zespo_id', targetEntity: Pracownik::class)]
     private Collection $pracownicy;
@@ -61,12 +61,12 @@ class Zespol
         return $this;
     }
 
-    public function getSzefZespolu(): ?string
+    public function getSzefZespolu(): ?Pracownik
     {
         return $this->szef_zespolu;
     }
 
-    public function setSzefZespolu(?string $szef_zespolu): self
+    public function setSzefZespolu(?Pracownik $szef_zespolu): self
     {
         $this->szef_zespolu = $szef_zespolu;
 

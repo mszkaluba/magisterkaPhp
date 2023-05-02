@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <meta charset="utf-8">
+    {% block title %}Dodaj zespoł{% endblock %}
+{% endblock %}
+
+{% block body %}
+    <div class="cialo">
+        <nav class="navbar navbar-light" style="background-color: #F0FFFF;">
+            <ul>
+                <li><a href="{{ path('main') }}">Strona główna</a></li>
+                <li><a href="{{ path('wszytkieZespoly') }}">Zespoły</a></li>
+                <li><a href="">Pracownicy</a></li>
+                <li><a href="">Zadania</a></li>
+            </ul>
+        </nav>
+
+        <div class="dodaj">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

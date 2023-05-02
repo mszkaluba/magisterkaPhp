@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <meta charset="utf-8">
+    {% block title %}Wszytkie zespoły{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-light" style="background-color: #F0FFFF;">
+        <ul>
+            <li><a href="{{ path('main') }}">Strona główna</a></li>
+            <li><a href="">Pracownicy</a></li>
+            <li><a href="">Zadania</a></li>
+            <li><a href="{{ path('dodajZespol') }}" style="float: right">Dodaj zespół</a></li>
+        </ul>
+    </nav>
+
+    {% for zespol in wszytkieZespoly %}
+        <div class="blokDanych">
+            <h3>Nazwa zespołu: {{ zespol.nazwa }}, Szef zespołu: {{ zespol.szefZespolu }}</h3>
+            <table>
+                <thead>
+                <th class="firstTh">Imie i nazwisko</th>
+                <th class="firstTh">Stanowisko</th>
+                </thead>
+                <tbody style="border: 2px solid black">
+                {% for pracownik in zespol.pracownicy %}
+                    <tr>
+                        <td class="firstTd">{{ pracownik.imie }} {{ pracownik.nazwisko }}</td>
+                        <td class="firstTd">{{ pracownik.stanowisko }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+             <ul>
+             <li><a href="{{ path('edytujZespol', {'id': zespol.id}) }}" type="button">Edytuj zespół</a></li>
+             </ul>
+        </div>
+    {% endfor %}
+
+{% endblock %}

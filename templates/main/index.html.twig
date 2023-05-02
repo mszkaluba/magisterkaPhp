@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    <meta charset="utf-8">
+    {% block title %}Praca magisterska{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-light" style="background-color: #F0FFFF;">
+        <ul>
+            <li><a href="{{ path('wszytkieZespoly') }}">Zespoły</a></li>
+            <li><a href="">Pracownicy</a></li>
+            <li><a href="">Zadania</a></li>
+        </ul>
+    </nav>
+
+{% endblock %}

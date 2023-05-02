@@ -132,4 +132,16 @@ class Pracownik
 
         return $this;
     }
+
+    public function getImieiNazwisko(): string
+    {
+        return $this->getImie()." ".$this->getNazwisko();
+    }
+
+    public function __toString(): string
+    {
+        return $this->getImie()." ".$this->getNazwisko();
+    }
+
+
 }
