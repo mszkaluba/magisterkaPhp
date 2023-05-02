@@ -50,7 +50,9 @@ class PracownikController extends AbstractController
                 'attr' => array('class' => 'form-control')))
             ->add('nazwisko', TextType::class, array('label' => 'Nazwisko',
                 'attr' => array('class' => 'form-control')))
-            ->add('wynagrodzenie', NumberType::class, array('label' => 'Wynagrodzenie',
+            ->add('wynagrodzenie', NumberType::class , array('label' => 'Wynagrodzenie',
+                'invalid_message' => 'Wprowadź prawidłową kwotę!!',
+                'scale' => 2,
                 'attr' => array('class' => 'form-control')))
             ->add('stanowisko', ChoiceType::class,
                 array('choices' => array(

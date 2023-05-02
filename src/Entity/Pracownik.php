@@ -24,7 +24,7 @@ class Pracownik
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $stanowisko = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(precision: 11, scale: 2, nullable: true)]
     private ?float $wynagrodzenie = null;
 
     #[ORM\ManyToOne(inversedBy: 'pracownicy')]
@@ -133,15 +133,8 @@ class Pracownik
         return $this;
     }
 
-    public function getImieiNazwisko(): string
-    {
-        return $this->getImie()." ".$this->getNazwisko();
-    }
-
     public function __toString(): string
     {
         return $this->getImie()." ".$this->getNazwisko();
     }
-
-
 }
